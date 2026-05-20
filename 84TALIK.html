@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="uz" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zamonaviy Dasturlash Tillari — Yakuniy 84 ta DAK Test</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #475569;
+        }
+        /* Orqa fon uchun suv belgisi (Watermark) */
+        .watermark-bg {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='250' height='250' viewBox='0 0 250 250'><text fill='rgba(139, 92, 246, 0.03)' font-size='13' font-family='sans-serif' x='20' y='120' transform='rotate(-30 20 120)'>@yomonboIa | @yovvoyiroq</text></svg>");
+        }
+        .dark .watermark-bg {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='250' height='250' viewBox='0 0 250 250'><text fill='rgba(255, 255, 255, 0.02)' font-size='13' font-family='sans-serif' x='20' y='120' transform='rotate(-30 20 120)'>@yomonboIa | @yovvoyiroq</text></svg>");
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-full flex flex-col watermark-bg transition-colors duration-300">
+
+    <!-- TOP HEADER NAVIGATION -->
+    <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+            
+            <!-- Logo va brend nomi -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center text-white shadow-md shadow-brand-500/20">
+                    <i class="fa-solid fa-code-commit text-lg animate-pulse"></i>
+                </div>
+                <div>
+                    <h1 class="text-base sm:text-lg font-bold tracking-tight text-slate-900 dark:text-white leading-tight">Dasturlash Tillari</h1>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">DAK Yakuniy • Qolgan 84 ta test (201-284)</p>
+                </div>
+            </div>
+
+            <!-- Foydalanuvchi talab qilgan Telegram tugmalari -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <!-- Kliklanadigan Admin tugmasi (Telegram profilga yo'naltiradi) -->
+                <a href="https://t.me/yomonboIa" target="_blank" class="hidden md:flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-brand-50 hover:text-brand-600 dark:hover:bg-slate-700/50 rounded-lg text-xs font-semibold text-slate-500 dark:text-slate-400 transition-all cursor-pointer">
+                    <i class="fa-solid fa-user-shield text-brand-500"></i>
+                    <span>Admin: <span class="font-bold">@yomonboIa</span></span>
+                </a>
+
+                <!-- Telegram kanalga havola tugmasi -->
+                <a href="https://t.me/yovvoyiroq" target="_blank" class="inline-flex items-center gap-2 px-3.5 py-2 bg-purple-600 hover:bg-purple-700 active:scale-95 text-white rounded-xl text-xs sm:text-sm font-bold shadow-sm transition-all">
+                    <i class="fa-brands fa-telegram text-base"></i>
+                    <span>Kanalimiz <span class="hidden sm:inline">@yovvoyiroq</span></span>
+                </a>
+
+                <!-- Tun/Kun rejimini o'zgartirgich -->
+                <button id="themeToggleBtn" onclick="toggleTheme()" class="w-9 h-9 flex items-center justify-center bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl text-slate-600 dark:text-slate-300 transition-all">
+                    <i id="themeIcon" class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- FLOATING CORNER CLICKABLE WATERMARK -->
+    <div class="fixed bottom-4 right-4 z-50 opacity-60 hover:opacity-100 transition-all">
+        <a href="https://t.me/yomonboIa" target="_blank" class="bg-white/90 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 px-4 py-2 rounded-full text-xs font-bold text-slate-600 dark:text-slate-300 flex items-center gap-2 shadow-lg hover:border-brand-500 hover:text-brand-500 transition-all">
+            <span class="w-2 h-2 rounded-full bg-brand-500 animate-ping"></span>
+            <span>Aloqa: @yomonboIa</span>
+        </a>
+    </div>
+
+    <!-- MAIN INTERACTIVE APP WRAPPER -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col lg:flex-row gap-6 relative">
+
+        <!-- DASHBOARD & NAVIGATION CONTROLS -->
+        <section class="w-full lg:w-80 flex flex-col gap-5 shrink-0">
+            
+            <!-- STATISTIKA KARTASI -->
+            <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm transition-all">
+                <h2 class="text-sm font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-3 flex items-center justify-between">
+                    <span>O'zlashtirish ko'rsatkichi</span>
+                    <i class="fa-solid fa-chart-line text-brand-500"></i>
+                </h2>
+                
+                <div class="grid grid-cols-2 gap-3 mb-4">
+                    <div class="bg-slate-50 dark:bg-slate-900/50 p-3 rounded-xl border border-slate-100 dark:border-slate-800/50 text-center">
+                        <p class="text-xs text-slate-400 dark:text-slate-500 font-medium">To'g'ri</p>
+                        <p id="correctCountText" class="text-xl font-bold text-emerald-500">0</p>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-900/50 p-3 rounded-xl border border-slate-100 dark:border-slate-800/50 text-center">
+                        <p class="text-xs text-slate-400 dark:text-slate-500 font-medium">Noto'g'ri</p>
+                        <p id="wrongCountText" class="text-xl font-bold text-rose-500">0</p>
+                    </div>
+                </div>
+
+                <!-- Progress ko'rsatkichi -->
+                <div>
+                    <div class="flex justify-between text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5">
+                        <span>Javoblar foizi:</span>
+                        <span id="progressBarPercentage">0%</span>
+                    </div>
+                    <div class="w-full h-2.5 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+                        <div id="progressBarFill" class="h-full bg-brand-500 rounded-full transition-all duration-300" style="width: 0%"></div>
+                    </div>
+                    <div class="flex justify-between text-[11px] text-slate-400 dark:text-slate-500 mt-2">
+                        <span id="answeredRatioText">Yechildi: 0 / 84</span>
+                        <span id="bookmarkCountText">Yodda: 0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- REJIM VA FILTER SOZLAMALARI -->
+            <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm transition-all flex flex-col gap-4">
+                <h2 class="text-sm font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 flex items-center justify-between">
+                    <span>Sozlamalar</span>
+                    <i class="fa-solid fa-sliders text-brand-500"></i>
+                </h2>
+
+                <!-- O'rganish/Imtihon rejimini almashtirgich -->
+                <div class="flex bg-slate-100 dark:bg-slate-900 p-1 rounded-xl">
+                    <button id="modeStudyBtn" onclick="changeQuizMode('study')" class="flex-1 py-2 text-xs font-bold rounded-lg transition-all bg-white dark:bg-slate-800 text-brand-600 shadow-sm">
+                        O'rganish
+                    </button>
+                    <button id="modeExamBtn" onclick="changeQuizMode('exam')" class="flex-1 py-2 text-xs font-bold rounded-lg transition-all text-slate-500 dark:text-slate-400">
+                        Imtihon
+                    </button>
+                </div>
+
+                <!-- Imtihon taymeri (Faqat Imtihon rejimida ko'rinadi) -->
+                <div id="examTimerContainer" class="hidden animate-fade-in">
+                    <div class="bg-rose-50 dark:bg-rose-950/30 border border-rose-100 dark:border-rose-900/50 rounded-xl p-3 flex items-center justify-between text-rose-700 dark:text-rose-400">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-hourglass-half animate-spin text-sm"></i>
+                            <span class="text-xs font-semibold">Qolgan vaqt:</span>
+                        </div>
+                        <span id="examTimerText" class="font-mono text-sm font-bold">45:00</span>
+                    </div>
+                </div>
+
+                <!-- Mavzu filteri -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-2">Mavzu filteri:</label>
+                    <select id="categoryFilter" onchange="filterQuestions()" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-xs font-semibold focus:ring-2 focus:ring-brand-500 focus:outline-none text-slate-700 dark:text-slate-300">
+                        <option value="all">Barcha mavzular (84 ta test)</option>
+                        <option value="pascal">Pascal va Algoritm Asoslari</option>
+                        <option value="cpp">C++ Dasturlash tili</option>
+                        <option value="stl">STL (Konteyner va iteratorlar)</option>
+                        <option value="oop">Obyektga Yo'naltirilgan Dasturlash</option>
+                        <option value="bookmarked">Yodda saqlanganlar (★)</option>
+                    </select>
+                </div>
+
+                <!-- Qidiruv maydoni -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-2">Savollardan qidirish:</label>
+                    <div class="relative">
+                        <input id="searchInput" oninput="filterQuestions()" type="text" placeholder="Kalit so'zni kiriting..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl pl-9 pr-4 py-2 text-xs font-semibold focus:ring-2 focus:ring-brand-500 focus:outline-none text-slate-700 dark:text-slate-300">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-[11px] text-slate-400"></i>
+                    </div>
+                </div>
+
+                <!-- Tezkor amallar -->
+                <div class="grid grid-cols-2 gap-2">
+                    <button onclick="shuffleCurrentQuestions()" class="p-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold text-xs rounded-xl flex items-center justify-center gap-1.5 transition-all">
+                        <i class="fa-solid fa-shuffle text-[10px]"></i>
+                        Aralashtirish
+                    </button>
+                    <button onclick="resetQuizState()" class="p-2.5 bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/20 dark:hover:bg-rose-950/40 text-rose-600 dark:text-rose-400 font-semibold text-xs rounded-xl flex items-center justify-center gap-1.5 transition-all">
+                        <i class="fa-solid fa-arrow-rotate-left text-[10px]"></i>
+                        Tozalash
+                    </button>
+                </div>
+            </div>
+
+            <!-- SAVOLLAR XARITASI (GRID MAP) -->
+            <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm transition-all flex flex-col flex-1 min-h-[250px] lg:max-h-[380px]">
+                <h2 class="text-sm font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-3 flex items-center justify-between">
+                    <span>Savollar xaritasi</span>
+                    <span id="filteredCountBadge" class="text-xs bg-slate-100 dark:bg-slate-900 px-2 py-0.5 rounded-full font-bold text-slate-500 dark:text-slate-400">84/84</span>
+                </h2>
+                
+                <div class="flex flex-wrap gap-2 text-[10px] text-slate-400 dark:text-slate-500 font-semibold mb-3">
+                    <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-slate-200 dark:bg-slate-700 rounded"></span> Ochiq</span>
+                    <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-emerald-500 rounded"></span> To'g'ri</span>
+                    <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-rose-500 rounded"></span> Noto'g'ri</span>
+                    <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-yellow-500 rounded"></span> Imtihonda</span>
+                </div>
+
+                <div id="questionsMapContainer" class="grid grid-cols-5 sm:grid-cols-10 lg:grid-cols-5 gap-1.5 overflow-y-auto flex-1 pr-1 custom-scrollbar">
+                    <!-- Dinamik ravishda tugmalar joylashadi -->
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ACTIVE TEST SAVOLI VA JAVOBLAR RO'YXATI -->
+        <section class="flex-1 flex flex-col gap-5">
+            
+            <!-- SAVOL KARTASI -->
+            <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm transition-all flex flex-col gap-6 relative overflow-hidden">
+                
+                <!-- Suv belgisi fon effekti -->
+                <div class="absolute inset-0 watermark-bg opacity-10 pointer-events-none"></div>
+
+                <!-- Yuqori panel ma'lumotlari -->
+                <div class="flex items-center justify-between gap-3 z-10">
+                    <div class="flex items-center gap-2">
+                        <span id="questionIndexBadge" class="px-3 py-1 bg-brand-600 text-white text-xs font-bold rounded-full">SAVOL 201</span>
+                        <span id="questionSourceBadge" class="px-3 py-1 bg-slate-100 dark:bg-slate-900 text-slate-500 dark:text-slate-400 text-xs font-bold rounded-full max-w-[150px] sm:max-w-[300px] truncate">Pascal va Algoritmlar</span>
+                    </div>
+                    <button id="bookmarkBtn" onclick="toggleBookmarkActiveQuestion()" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-300 dark:text-slate-600 transition-all">
+                        <i class="fa-solid fa-star text-lg"></i>
+                    </button>
+                </div>
+
+                <!-- Savol matni -->
+                <div class="z-10">
+                    <h3 id="questionTextDisplay" class="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-relaxed whitespace-pre-line font-mono bg-slate-50/50 dark:bg-slate-900/30 p-4 rounded-2xl border border-slate-100 dark:border-slate-800/80">
+                        Dastur yuklanmoqda...
+                    </h3>
+                </div>
+
+                <!-- Variantlar ro'yxati -->
+                <div id="optionsListContainer" class="flex flex-col gap-3 z-10">
+                    <!-- JavaScript orqali aralashtirilib yaratiladi -->
+                </div>
+
+                <!-- Navigatsiya va Boshqaruv tugmalari -->
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100 dark:border-slate-700/50 pt-5 mt-4 z-10">
+                    <div class="flex gap-2 w-full sm:w-auto">
+                        <button id="prevBtn" onclick="navigateToQuestion(-1)" class="flex-1 sm:flex-initial px-4 py-2.5 border border-slate-200 dark:border-slate-700 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700/50 font-bold text-xs flex items-center justify-center gap-1.5 transition-all">
+                            <i class="fa-solid fa-arrow-left"></i> Oldingisi
+                        </button>
+                        <button id="nextBtn" onclick="navigateToQuestion(1)" class="flex-1 sm:flex-initial px-4 py-2.5 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-800 dark:text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all">
+                            Keyingisi <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Imtihonni topshirish tugmasi -->
+                    <div class="w-full sm:w-auto flex gap-2 justify-end">
+                        <button id="examSubmitBtn" onclick="finishExamPrompt()" class="hidden w-full sm:w-auto px-5 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-1.5 shadow-sm transition-all animate-pulse">
+                            <i class="fa-solid fa-square-check"></i> Imtihonni yakunlash
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- TO'G'RI JAVOB TASDIG'I (FAQAT O'RGANISH REJIMIDA KO'RINADI) -->
+            <div id="explanationCard" class="bg-violet-50/50 dark:bg-violet-950/20 border border-violet-100/50 dark:border-violet-900/30 rounded-3xl p-6 sm:p-8 shadow-sm transition-all flex flex-col gap-3 animate-fade-in">
+                <div class="flex items-center gap-2 text-violet-600 dark:text-violet-400">
+                    <i class="fa-solid fa-circle-check text-base animate-bounce"></i>
+                    <h4 class="text-xs sm:text-sm font-bold uppercase tracking-wider">Tasdiqlangan To'g'ri Javob</h4>
+                </div>
+                <div class="bg-white dark:bg-slate-900/50 rounded-2xl p-4 border border-violet-100 dark:border-violet-950/50">
+                    <p id="explanationTextDisplay" class="text-xs sm:text-sm font-semibold italic text-slate-600 dark:text-slate-300 leading-relaxed font-mono">
+                        ...
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- IMTIHON NATIJALARI MODAL OYNASI -->
+    <div id="examResultModal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl animate-scale-up">
+            
+            <div class="p-6 sm:p-8 flex flex-col items-center text-center border-b border-slate-100 dark:border-slate-800">
+                <div class="w-16 h-16 bg-brand-100 dark:bg-brand-950/50 text-brand-500 dark:text-brand-400 rounded-full flex items-center justify-center text-2xl mb-4">
+                    <i class="fa-solid fa-award"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Imtihon Yakunlandi!</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Natijalar tahlili va ko'rsatkichlar hisoblandi.</p>
+
+                <!-- Batafsil natijalar bloki -->
+                <div class="my-6 grid grid-cols-3 gap-4 w-full">
+                    <div class="bg-slate-50 dark:bg-slate-800/50 p-3 rounded-2xl text-center">
+                        <p class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase">Jami yechildi</p>
+                        <p id="modalTotalAnswered" class="text-lg font-extrabold text-slate-700 dark:text-slate-300">0</p>
+                    </div>
+                    <div class="bg-emerald-50 dark:bg-emerald-950/20 p-3 rounded-2xl text-center">
+                        <p class="text-[10px] font-bold text-emerald-400 dark:text-emerald-500 uppercase">To'g'ri</p>
+                        <p id="modalCorrect" class="text-lg font-extrabold text-emerald-600 dark:text-emerald-400">0</p>
+                    </div>
+                    <div class="bg-rose-50 dark:bg-rose-950/20 p-3 rounded-2xl text-center">
+                        <p class="text-[10px] font-bold text-rose-400 dark:text-rose-500 uppercase">Noto'g'ri</p>
+                        <p id="modalIncorrect" class="text-lg font-extrabold text-rose-600 dark:text-rose-400">0</p>
+                    </div>
+                </div>
+
+                <!-- Foiz ko'rsatkichi diagrammasi -->
+                <div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-4 mb-2 overflow-hidden">
+                    <div id="modalPercentBar" class="h-full bg-brand-500 rounded-full animate-pulse" style="width: 0%"></div>
+                </div>
+                <p id="modalPercentText" class="text-sm font-bold text-slate-700 dark:text-slate-300">Ko'rsatkich: 0%</p>
+                <p id="modalGradeText" class="text-xs font-semibold text-brand-600 dark:text-brand-400 mt-2 px-4"></p>
+            </div>
+
+            <div class="p-4 bg-slate-50 dark:bg-slate-850 flex flex-col gap-2">
+                <button onclick="reviewExamAnswers()" class="w-full py-3 bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm rounded-xl transition-all shadow-sm">
+                    Xatolarni ko'rib chiqish (O'rganish rejimida)
+                </button>
+                <button onclick="closeModalAndReset()" class="w-full py-3 bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs rounded-xl transition-all">
+                    Testni qayta boshlash
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- OVOZLI EFFEKTLAR TIZIMI -->
+    <script>
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playQuizSound(type) {
+            try {
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                if (type === 'correct') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); 
+                    osc.frequency.setValueAtTime(880.00, audioCtx.currentTime + 0.08); 
+                    gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.3);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.3);
+                } else if (type === 'wrong') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(220.00, audioCtx.currentTime); 
+                    osc.frequency.setValueAtTime(146.83, audioCtx.currentTime + 0.1); 
+                    gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.4);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.4);
+                }
+            } catch (err) {
+                // Audio xatoliklarini e'tiborsiz qoldirish
+            }
+        }
+    </script>
+
+    <!-- QOLGAN 84 TA TESTNING RASMIY BAZASI -->
+    <script>
+        const rawQuestionsData = [
+            {
+                id: 201,
+                q: "Paskalda simvollar satrini qismlarga ajratuvchi funksiya qaysi?",
+                answer: "Copy",
+                options: ["Copy", "Concat", "Length", "Delete"],
+                cat: "pascal"
+            },
+            {
+                id: 202,
+                q: "Paskal tilida fayllar bilan ishlashda fayl o'zgaruvchisini jismoniy fayl bilan bog'lovchi protsedura qaysi?",
+                answer: "Assign",
+                options: ["Assign", "Reset", "Rewrite", "Close"],
+                cat: "pascal"
+            },
+            {
+                id: 203,
+                q: "Paskal tilida matnli fayllarni faqat o'qish uchun ochuvchi protsedura qaysi?",
+                answer: "Reset",
+                options: ["Reset", "Rewrite", "Append", "Assign"],
+                cat: "pascal"
+            },
+            {
+                id: 204,
+                q: "Paskal tilida yangi fayl yaratish va uni yozish uchun ochuvchi protsedura qaysi?",
+                answer: "Rewrite",
+                options: ["Rewrite", "Reset", "Append", "Close"],
+                cat: "pascal"
+            },
+            {
+                id: 205,
+                q: "Fayl oxirini (End of File) tekshiruvchi Paskal mantiqiy funksiyasi qaysi?",
+                answer: "Eof",
+                options: ["Eof", "Eoln", "Reset", "Close"],
+                cat: "pascal"
+            },
+            {
+                id: 206,
+                q: "Paskal tilida ko'rsatkichli o'zgaruvchiga dinamik xotira ajratuvchi protsedura qaysi?",
+                answer: "New",
+                options: ["New", "Dispose", "GetMem", "FreeMem"],
+                cat: "pascal"
+            },
+            {
+                id: 207,
+                q: "Paskal tilida dinamik xotirani bo'shatuvchi va o'chiruvchi protsedura qaysi?",
+                answer: "Dispose",
+                options: ["Dispose", "New", "Release", "Halt"],
+                cat: "pascal"
+            },
+            {
+                id: 208,
+                q: "Paskal tilida ko'rsatkichli o'zgaruvchi hech qanday qiymatga yoki adresga ega emasligini bildiruvchi konstanta?",
+                answer: "NIL",
+                options: ["NIL", "NULL", "0", "False"],
+                cat: "pascal"
+            },
+            {
+                id: 209,
+                q: "Stek (Stack) ma'lumotlar strukturasi qaysi asosiy qoidaga tayanadi?",
+                answer: "LIFO (Last In First Out)",
+                options: ["LIFO (Last In First Out)", "FIFO (First In First Out)", "Random Access", "Boshqaruvsiz"],
+                cat: "pascal"
+            },
+            {
+                id: 210,
+                q: "Navbat (Queue) ma'lumotlar strukturasi qaysi asosiy qoidaga ko'ra ishlaydi?",
+                answer: "FIFO (First In First Out)",
+                options: ["FIFO (First In First Out)", "LIFO (Last In First Out)", "Uzluksiz bog'lanish", "Massiv printsipi"],
+                cat: "pascal"
+            },
+            {
+                id: 211,
+                q: "Daraxt (Tree) strukturasining eng yuqori, boshlang'ich tuguni nima deb ataladi?",
+                answer: "ildiz (root)",
+                options: ["ildiz (root)", "barg (leaf)", "shox (branch)", "tugun (node)"],
+                cat: "pascal"
+            },
+            {
+                id: 212,
+                q: "C++ tilida sinf (class) konstruktori nima?",
+                answer: "Sinf obyekti yaratilganda avtomatik chaqiriladigan maxsus metod",
+                options: [
+                    "Sinf obyekti yaratilganda avtomatik chaqiriladigan maxsus metod",
+                    "Obyektni xotiradan o'chirish uchun xizmat qiladigan funksiya",
+                    "Faqat private bo'limini e'lon qiluvchi qism",
+                    "Dastur yakunida ishlaydigan tizimli jarayon"
+                ],
+                cat: "oop"
+            },
+            {
+                id: 213,
+                q: "C++ tilida destruktorning asosiy vazifasi nimadan iborat?",
+                answer: "Obyekt xotiradan o'chirilganda dinamik ajratilgan resurslarni bo'shatish",
+                options: [
+                    "Obyekt xotiradan o'chirilganda dinamik ajratilgan resurslarni bo'shatish",
+                    "Dinamik xotiradan yangi obyektga joy band qilish",
+                    "Massiv elementlarini saralash",
+                    "Sinf o'zgaruvchilariga boshlang'ich qiymat berish"
+                ],
+                cat: "oop"
+            },
+            {
+                id: 214,
+                q: "Sinf destruktori tashqaridan parametr qabul qilishi mumkinmi?",
+                answer: "Yo'q, destruktor hech qanday parametr qabul qilmaydi",
+                options: [
+                    "Yo'q, destruktor hech qanday parametr qabul qilmaydi",
+                    "Ha, bitta butun turdagi parametr qabul qilishi shart",
+                    "Ha, ixtiyoriy andozali parametr qabul qila oladi",
+                    "Faqat ko'rsatkichli o'zgaruvchilarni qabul qiladi"
+                ],
+                cat: "oop"
+            },
+            {
+                id: 215,
+                q: "Sinf destruktori qiymat qaytarishi mumkinmi?",
+                answer: "Yo'q, u qiymat qaytarmaydi, xatto void tipini ham yozib bo'lmaydi",
+                options: [
+                    "Yo'q, u qiymat qaytarmaydi, xatto void tipini ham yozib bo'lmaydi",
+                    "Ha, standart void qiymatini qaytaradi",
+                    "Ha, muvaffaqiyatli o'chirilsa true qiymat qaytaradi",
+                    "O'chirilgan baytlar sonini qaytaradi"
+                ],
+                cat: "oop"
+            },
+            {
+                id: 216,
+                q: "Do'stona funksiya (friend function) nima?",
+                answer: "Sinfning yopiq (private) va himoyalangan (protected) a'zolariga ruxsatga ega bo'lgan tashqi funksiya",
+                options: [
+                    "Sinfning yopiq (private) va himoyalangan (protected) a'zolariga ruxsatga ega bo'lgan tashqi funksiya",
+                    "Faqat public elementlarni o'zgartira oladigan global funksiya",
+                    "Boshqa fayldagi hamma funksiyalarga aytiladi",
+                    "Konstruktor o'rnida ishlaydigan yordamchi metod"
+                ],
+                cat: "oop"
+            },
+            {
+                id: 217,
+                q: "C++ da virtual funksiyalar nima uchun ishlatiladi?",
+                answer: "Dinamik polimorfizmni amalga oshirish va kechki bog'lanish (late binding) uchun",
+                options: [
+                    "Dinamik polimorfizmni amalga oshirish va kechki bog'lanish (late binding) uchun",
+                    "Xotiradan joyni tejash va tezlikni oshirish uchun",
+                    "Obyektlarni nusxalash xatoligini oldini olish uchun",
+                    "Faqat static o'zgaruvchilar bilan ishlash uchun"
+                ],
+                cat: "oop"
+            },
+            {
+                id: 218,
+                q: "Sof virtual funksiya (pure virtual function) qanday e'lon qilinadi?",
+                answer: "virtual void func() = 0;",
+                options: [
+                    "virtual void func() = 0;",
+                    "virtual void func();",
+                    "void virtual func() = NULL;",
+                    "pure virtual void func();"
+                ],
+                cat: "oop"
+            },
+            {
+                id: 219,
+                q: "Kamida bitta sof virtual funksiyaga ega bo'lgan sinf nima deb ataladi?",
+                answer: "Abstrakt sinf (Abstract class)",
+                options: ["Abstrakt sinf (Abstract class)", "Hosilaviy sinf", "Do'stona sinf", "Statik sinf"],
+                cat: "oop"
+            },
+            {
+                id: 220,
+                q: "Abstrakt sinfdan to'g'ridan-to'g'ri mustaqil obyekt yaratish mumkinmi?",
+                answer: "Yo'q, abstrakt sinfdan obyekt yaratib bo'lmaydi",
+                options: [
+                    "Yo'q, abstrakt sinfdan obyekt yaratib bo'lmaydi",
+                    "Ha, oddiy sinflar kabi obyekt yaratish mumkin",
+                    "Faqat new operatori yordamida dinamik yaratish mumkin",
+                    "Faqat main() fuksiyasidan tashqarida yaratish mumkin"
+                ],
+                cat: "oop"
+            },
+            {
+                id: 221,
+                q: "STL da vector konteynerining capacity() metodi nima qaytaradi?",
+                answer: "Vektor qo'shimcha xotira ajratmasdan sig'dira oladigan elementlar sonini",
+                options: [
+                    "Vektor qo'shimcha xotira ajratmasdan sig'dira oladigan elementlar sonini",
+                    "Vektorning joriy haqiqiy elementlari sonini",
+                    "Vektor sig'dirishi mumkin bo'lgan maksimal nazariy elementlar sonini",
+                    "Vektor egallagan umumiy baytlar hajmini"
+                ],
+                cat: "stl"
+            },
+            {
+                id: 222,
+                q: "STL da vector::reserve() metodi nima vazifani bajaradi?",
+                answer: "Vektor uchun minimal xotira hajmini oldindan band qiladi",
+                options: [
+                    "Vektor uchun minimal xotira hajmini oldindan band qiladi",
+                    "Vektorning barcha elementlarini o'chirib tashlaydi",
+                    "Vektor elementlarini teskari tartibda joylashtiradi",
+                    "Vektor hajmini nolgacha qisqartiradi"
+                ],
+                cat: "stl"
+            },
+            {
+                id: 223,
+                q: "STL da list konteyneri qanday tuzilishga ega?",
+                answer: "Ikki tomonlama bog'langan ro'yxat (double linked list)",
+                options: [
+                    "Ikki tomonlama bog'langan ro'yxat (double linked list)",
+                    "Dinamik ketma-ket massiv",
+                    "Bir tomonlama bog'langan navbat",
+                    "Kalit-qiymat ko'rinishidagi qizil-qora daraxt"
+                ],
+                cat: "stl"
+            },
+            {
+                id: 224,
+                q: "STL da list konteynerining boshiga yoki oxiriga element qo'shish vaqtinchalik murakkabligi (time complexity) qancha?",
+                answer: "O(1)",
+                options: ["O(1)", "O(log N)", "O(N)", "O(N log N)"],
+                cat: "stl"
+            },
+            {
+                id: 225,
+                q: "STL da std::sort algoritmi qaysi sarlavha fayli (kutubxona) tarkibiga kiradi?",
+                answer: "<algorithm>",
+                options: ["<algorithm>", "<vector>", "<iterator>", "<numeric>"],
+                cat: "stl"
+            },
+            {
+                id: 226,
+                q: "C++ tilida istisnolarni boshqarishda (exception handling) qaysi kalit so'zlar ishlatiladi?",
+                answer: "try, catch, throw",
+                options: ["try, catch, throw", "switch, case, default", "if, else, goto", "new, delete, free"],
+                cat: "cpp"
+            },
+            {
+                id: 227,
+                q: "C++ da catch(...) bloki nima vazifani bajaradi?",
+                answer: "Turi va tipidan qat'iy nazar har qanday istisnolarni tutib oladi",
+                options: [
+                    "Turi va tipidan qat'iy nazar har qanday istisnolarni tutib oladi",
+                    "Faqat butun sonli xatoliklarni tutadi",
+                    "Xatoni e'tiborsiz qoldirib dasturni davom ettiradi",
+                    "Faqat tizimli apparat xatoliklarini qayta ishlaydi"
+                ],
+                cat: "cpp"
+            },
+            {
+                id: 228,
+                q: "Paskal tilida 'A: array[1..10, 1..10] of integer;' qanday massiv hisoblanadi?",
+                answer: "Ikki o'lchovli butun sonli massiv",
+                options: ["Ikki o'lchovli butun sonli massiv", "Bir o'lchovli dinamik massiv", "Uch o'lchovli haqiqiy sonli massiv", "Faqat bir qatorli jadval"],
+                cat: "pascal"
+            },
+            {
+                id: 229,
+                q: "Paskal tilida satrning joriy uzunligini aniqlovchi mantiqiy yoki butun funksiya qaysi?",
+                answer: "Length",
+                options: ["Length", "Size", "Concat", "Copy"],
+                cat: "pascal"
+            },
+            {
+                id: 230,
+                q: "Paskalda satr ichidan ma'lum pozitsiyadan boshlab belgilangan sondagi belgilarni o'chiruvchi protsedura?",
+                answer: "Delete",
+                options: ["Delete", "Copy", "Insert", "Pos"],
+                cat: "pascal"
+            },
+            {
+                id: 231,
+                q: "Paskal tilida satrning ma'lum joyiga boshqa bir satrni joylashtiruvchi protsedura qaysi?",
+                answer: "Insert",
+                options: ["Insert", "Concat", "Delete", "Pos"],
+                cat: "pascal"
+            },
+            {
+                id: 232,
+                q: "Paskal tilida haqiqiy sonning faqat butun qismini oluvchi funksiya?",
+                answer: "Trunc",
+                options: ["Trunc", "Round", "Int", "Frac"],
+                cat: "pascal"
+            },
+            {
+                id: 233,
+                q: "Paskal tilida haqiqiy sonni eng yaqin butun songacha yaxlitlovchi funksiya?",
+                answer: "Round",
+                options: ["Round", "Trunc", "Abs", "Sqr"],
+                cat: "pascal"
+            },
+            {
+                id: 234,
+                q: "Paskalda Random(100) funksiyasi qaysi oraliqdagi sonlarni qaytaradi?",
+                answer: "0 dan 99 gacha bo'lgan tasodifiy butun sonlarni",
+                options: [
+                    "0 dan 99 gacha bo'lgan tasodifiy butun sonlarni",
+                    "1 dan 100 gacha bo'lgan tasodifiy butun sonlarni",
+                    "0 dan 100 gacha bo'lgan barcha haqiqiy sonlarni",
+                    "-100 dan 100 gacha bo'lgan tasodifiy sonlarni"
+                ],
+                cat: "pascal"
+            },
+            {
+                id: 235,
+                q: "Paskalda dastur bajarilishini zudlik bilan to'xtatuvchi tizimli protsedura qaysi?",
+                answer: "Halt",
+                options: ["Halt", "Exit", "Break", "End"],
+                cat: "pascal"
+            },
+            {
+                id: 236,
+                q: "Paskalda UpCase(c) funksiyasi nima vazifani bajaradi?",
+                answer: "Lotincha kichik harfni mos ravishda bosh harfga o'zgartiradi",
+                options: [
+                    "Lotincha kichik harfni mos ravishda bosh harfga o'zgartiradi",
+                    "Satrdagi barcha harflarni bosh harfga o'tkazadi",
+                    "Kiritilgan belgini raqamga aylantiradi",
+                    "Belgining ASCII kodini qaytaradi"
+                ],
+                cat: "pascal"
+            },
+            {
+                id: 237,
+                q: "C++ da std::string::substr(pos, len) funksiyasi qanday vazifani bajaradi?",
+                answer: "pos pozitsiyadan boshlab len ta belgidan iborat bo'lgan qism satrni qaytaradi",
+                options: [
+                    "pos pozitsiyadan boshlab len ta belgidan iborat bo'lgan qism satrni qaytaradi",
+                    "Satr ichidan pos belgini len marta o'chiradi",
+                    "Satr boshiga len marta pos belgisini qo'shadi",
+                    "Belgilangan satr elementlarini saralaydi"
+                ],
+                cat: "cpp"
+            },
+            {
+                id: 238,
+                q: "C++ da std::string::find() funksiyasi qidirilayotgan belgi yoki qism satr topilmasa nima qaytaradi?",
+                answer: "std::string::npos",
+                options: ["std::string::npos", "-1", "0", "NULL"],
+                cat: "cpp"
+            },
+            {
+                id: 239,
+                q: "C++ da 'cin >> x;' bajarilganda probel (bo'shliq) kiritilsa, oqim qanday qabul qiladi?",
+                answer: "Probel kiritishni yakunlovchi belgi hisoblanadi (satr to'liq o'qilmaydi)",
+                options: [
+                    "Probel kiritishni yakunlovchi belgi hisoblanadi (satr to'liq o'qilmaydi)",
+                    "Probel satrning bir qismi sifatida normal qabul qilinadi",
+                    "Kompilyatsiya vaqtida darhol xatolik beradi",
+                    "Probel o'rniga avtomatik ravishda '\\0' belgisi qo'yiladi"
+                ],
+                cat: "cpp"
+            },
+            {
+                id: 240,
+                q: "C++ da probellar bilan birga butun boshli satrni to'liq o'qish uchun qaysi funksiya ishlatiladi?",
+                answer: "getline()",
+                options: ["getline()", "cin >>", "gets()", "scanf()"],
+                cat: "cpp"
+            },
+            {
+                id: 241,
+                q: "OOP tamoyillariga ko'ra Polimorfizm nima?",
+                answer: "Bir xil nomli metodlarning turli sinflarda o'ziga xos tarzda turlicha ishlashi",
+                options: [
+                    "Bir xil nomli metodlarning turli sinflarda o'ziga xos tarzda turlicha ishlashi",
+                    "Sinf a'zolarini tashqi ruxsatlardan to'liq himoyalash",
+                    "Bitta sinfning boshqa sinfdan barcha xususiyatlarni meros qilib olishi",
+                    "Dasturdagi xotira boshqaruvini optimallashtirish"
+                ],
+                cat: "oop"
+            },
+            {
+                id: 242,
+                q: "C++ da ko'p vorislik (multiple inheritance) nima?",
+                answer: "Bitta hosila sinf bir nechta mustaqil tayanch sinflardan vorislik olishi",
+                options: [
+                    "Bitta hosila sinf bir nechta mustaqil tayanch sinflardan vorislik olishi",
+                    "Bitta tayanch sinfdan ko'plab hosilaviy sinflarning yaralishi",
+                    "Sinf ichida bir nechta konstruktorlarning qo'llanilishi",
+                    "Bir vaqtning o'zida obyekt va ko'rsatkichdan meros olish"
+                ],
+                cat: "oop"
+            },
+            {
+                id: 243,
+                q: "Ko'p vorislikda vujudga keladigan 'olmos muammosi' (diamond problem) C++ da qanday hal qilinadi?",
+                answer: "Virtual vorislik (virtual inheritance) kalit so'zi yordamida",
+                options: [
+                    "Virtual vorislik (virtual inheritance) kalit so'zi yordamida",
+                    "Do'stona (friend) sinflar bilan almashtirish orqali",
+                    "Destruktorlarni to'liq virtual qilish orqali",
+                    "Dynamic_cast operatoridan foydalanib"
+                ],
+                cat: "oop"
+            },
+            {
+                id: 244,
+                q: "C++ da obyektlar o'rtasida xavfsiz o'tish uchun dynamic_cast nima uchun ishlatiladi?",
+                answer: "Polimorfik sinf ko'rsatkichlarini xavfsiz pastga (downcasting) qayta tiplash uchun",
+                options: [
+                    "Polimorfik sinf ko'rsatkichlarini xavfsiz pastga (downcasting) qayta tiplash uchun",
+                    "Konstanta qiymatini majburan o'zgartirish uchun",
+                    "Ixtiyoriy tiplarni baytlar ko'rinishida o'qish uchun",
+                    "Kompilyatsiya vaqtida tezkor tip o'tkazish uchun"
+                ],
+                cat: "oop"
+            },
+            {
+                id: 245,
+                q: "C++ da const_cast operatorining asosiy vazifasi nima?",
+                answer: "O'zgaruvchining const (o'zgarmaslik) xususiyatini vaqtincha olib tashlash",
+                options: [
+                    "O'zgaruvchining const (o'zgarmaslik) xususiyatini vaqtincha olib tashlash",
+                    "Butun sonni haqiqiy songa xavfsiz o'tkazish",
+                    "Klass ko'rsatkichlarini virtual qayta yuklash",
+                    "Dinamik xotirani tozalash"
+                ],
+                cat: "oop"
+            },
+            {
+                id: 246,
+                q: "C++ da static_cast operatori asosan nima uchun xizmat qiladi?",
+                answer: "Kompilyatsiya vaqtida ma'lum bo'lgan standart tiplarni (masalan, int dan float) aylantirish",
+                options: [
+                    "Kompilyatsiya vaqtida ma'lum bo'lgan standart tiplarni (masalan, int dan float) aylantirish",
+                    "Ish vaqtida virtual funksiyalar bog'lanishini tekshirish",
+                    "Konstanta qiymatlarini butunlay o'chirish",
+                    "Ko'p oqimli dasturlarni sinxronlash"
+                ],
+                cat: "oop"
+            },
+            {
+                id: 247,
+                q: "C++ dagi reinterpret_cast operatori nimani bildiradi?",
+                answer: "Tizim darajasidagi, mos kelmaydigan tiplarni va ko'rsatkichlarni bir-biriga majburan o'tkazish",
+                options: [
+                    "Tizim darajasidagi, mos kelmaydigan tiplarni va ko'rsatkichlarni bir-biriga majburan o'tkazish",
+                    "Faqat virtual sinflar bilan ishlovchi xavfsiz operator",
+                    "Matematik ifodalarni tezkor hisoblash moduli",
+                    "Vorislik darajasini o'zgartiruvchi xizmatchi so'z"
+                ],
+                cat: "oop"
+            },
+            {
+                id: 248,
+                q: "C++ da andozalar (templates) nima uchun kerak?",
+                answer: "Har xil ma'lumotlar tiplari bilan bir xil ishlovchi umumlashgan (generic) klass va funksiyalar yaratish uchun",
+                options: [
+                    "Har xil ma'lumotlar tiplari bilan bir xil ishlovchi umumlashgan (generic) klass va funksiyalar yaratish uchun",
+                    "Dasturning grafik interfeysini shakllantirish uchun",
+                    "Xotirada static o'zgaruvchilar joyini tejash uchun",
+                    "Faqat fayllar oqimini tartibga solish uchun"
+                ],
+                cat: "oop"
+            },
+            {
+                id: 249,
+                q: "C++ da andozali funksiya sarlavhasi qanday to'g'ri e'lon qilinadi?",
+                answer: "template <typename T> void func(T x);",
+                options: [
+                    "template <typename T> void func(T x);",
+                    "void func(T x) using template;",
+                    "template class T: void func(T x);",
+                    "T void func(template T x);"
+                ],
+                cat: "oop"
+            },
+            {
+                id: 250,
+                q: "STL da vector konteyneri elementlari kompyuter xotirasida qanday joylashadi?",
+                answer: "Dinamik massiv kabi uzluksiz xotira blokida (ketma-ket)",
+                options: [
+                    "Dinamik massiv kabi uzluksiz xotira blokida (ketma-ket)",
+                    "Xotiraning turli qismlarida tarqoq va zanjirli tarzda",
+                    "Faqat kesh xotirada mantiqiy tartibda",
+                    "Kompilyator tanlagan ixtiyoriy tartibsiz bloklarda"
+                ],
+                cat: "stl"
+            },
+            {
+                id: 251,
+                q: "STL da vector ning ixtiyoriy indeksidagi elementga to'g'ridan-to'g'ri murojaat qilish vaqti (access time) qancha?",
+                answer: "O(1)",
+                options: ["O(1)", "O(log N)", "O(N)", "O(N log N)"],
+                cat: "stl"
+            },
+            {
+                id: 252,
+                q: "STL da std::map konteyneri o'z elementlarini qanday tartibda saqlaydi?",
+                answer: "Kalit bo'yicha o'sish tartibida saralangan (Qizil-qora daraxt asosi)",
+                options: [
+                    "Kalit bo'yicha o'sish tartibida saralangan (Qizil-qora daraxt asosi)",
+                    "Elementlar kiritilgan tartibda",
+                    "Mutlaqo tartibsiz xeshlangan holatda",
+                    "Faqat qiymatlarining uzunligi bo'yicha saralangan"
+                ],
+                cat: "stl"
+            },
+            {
+                id: 253,
+                q: "STL da std::unordered_map o'z elementlarini qanday tuzilmada saqlaydi?",
+                answer: "Xesh-jadval (hash table) ko'rinishida tartibsiz",
+                options: [
+                    "Xesh-jadval (hash table) ko'rinishida tartibsiz",
+                    "Binar qidiruv daraxtida saralangan",
+                    "Uzluksiz chiziqli massivda",
+                    "Ikki tomonlama bog'langan dinamik ro'yxatda"
+                ],
+                cat: "stl"
+            },
+            {
+                id: 254,
+                q: "STL da map va unordered_map da element qidirish vaqtining asosiy farqi nimada?",
+                answer: "map da O(log N), unordered_map da esa o'rtacha O(1)",
+                options: [
+                    "map da O(log N), unordered_map da esa o'rtacha O(1)",
+                    "map da O(1), unordered_map da O(N)",
+                    "Ikkalasida ham O(N) vaqt sarflanadi",
+                    "map saralanmaganligi sababli sekinroq ishlaydi"
+                ],
+                cat: "stl"
+            },
+            {
+                id: 255,
+                q: "STL da stack konteyner adapteri odatda avtomatik ravishda qaysi asosiy konteynerdan foydalanadi?",
+                answer: "std::deque",
+                options: ["std::deque", "std::vector", "std::list", "std::set"],
+                cat: "stl"
+            },
+            {
+                id: 256,
+                q: "STL da queue konteyner adapteri tezkorlik sababli qaysi konteynerdan odatda foydalana olmaydi?",
+                answer: "std::vector (chunki uning boshidan element o'chirish O(N) vaqt oladi)",
+                options: [
+                    "std::vector (chunki uning boshidan element o'chirish O(N) vaqt oladi)",
+                    "std::list (chunki u chiziqli bog'lanmagan)",
+                    "std::deque (chunki u xotirani ko'p yeydi)",
+                    "Barcha konteynerlardan bir xil foydalanadi"
+                ],
+                cat: "stl"
+            },
+            {
+                id: 257,
+                q: "STL dagi iteratorlar nima?",
+                answer: "Konteyner elementlari bo'ylab harakatlanish va ularga murojaat qilish uchun mo'ljallangan maxsus ko'rsatkichsimon obyektlar",
+                options: [
+                    "Konteyner elementlari bo'ylab harakatlanish va ularga murojaat qilish uchun mo'ljallangan maxsus ko'rsatkichsimon obyektlar",
+                    "Massiv elementlarini o'chirish uchun xizmat qiladigan funksiyalar",
+                    "Faqat mantiqiy amallarni bajaruvchi operatorlar",
+                    "Xotirada dinamik massiv yaratuvchi andozalar"
+                ],
+                cat: "stl"
+            },
+            {
+                id: 258,
+                q: "Fayl oqimidan ma'lumotlarni qatorma-qator (satrlar bo'yicha) o'qish uchun qaysi oqim funksiyasi qo'llaniladi?",
+                answer: "getline(file, str)",
+                options: ["getline(file, str)", "file >> str", "file.read(str)", "file.get(str)"],
+                cat: "cpp"
+            },
+            {
+                id: 259,
+                q: "C++ da faylni ham yozish, ham o'qish uchun bir vaqtda ochish rejami qaysi?",
+                answer: "ios::in | ios::out",
+                options: ["ios::in | ios::out", "ios::app | ios::trunc", "ios::binary", "ios::out | ios::app"],
+                cat: "cpp"
+            },
+            {
+                id: 260,
+                q: "Yozish oqimi uchun fayl ko'rsatkichini fayl boshidan ma'lum baytga ko'chirish oqim funksiyasi qaysi?",
+                answer: "seekp()",
+                options: ["seekp()", "seekg()", "tellp()", "tellg()"],
+                cat: "cpp"
+            },
+            {
+                id: 261,
+                q: "O'qish oqimi (ifstream) uchun fayl ko'rsatkichini ma'lum baytga ko'chirish oqim funksiyasi qaysi?",
+                answer: "seekg()",
+                options: ["seekg()", "seekp()", "tellg()", "tellp()"],
+                cat: "cpp"
+            },
+            {
+                id: 262,
+                q: "Yozish oqimi ko'rsatkichining hozirgi holatini (baytlarda) qaytaruvchi funksiya?",
+                answer: "tellp()",
+                options: ["tellp()", "tellg()", "seekp()", "seekg()"],
+                cat: "cpp"
+            },
+            {
+                id: 263,
+                q: "O'qish oqimi ko'rsatkichining hozirgi holatini baytlarda aniqlovchi funksiya qaysi?",
+                answer: "tellg()",
+                options: ["tellg()", "tellp()", "seekg()", "seekp()"],
+                cat: "cpp"
+            },
+            {
+                id: 264,
+                q: "Paskalda Seek(F, n) protsedurasi nima vazifani bajaradi?",
+                answer: "Fayl ko'rsatkichini n-element pozitsiyasiga o'tkazadi",
+                options: [
+                    "Fayl ko'rsatkichini n-element pozitsiyasiga o'tkazadi",
+                    "Fayldagi n-chi elementni butunlay o'chirib tashlaydi",
+                    "Fayl nomini n ga o'zgartiradi",
+                    "Faylni yopib yuboradi"
+                ],
+                cat: "pascal"
+            },
+            {
+                id: 265,
+                q: "Paskal tilida FileSize(F) funksiyasi nimani qaytaradi?",
+                answer: "Fayldagi umumiy elementlar (komponentlar) sonini",
+                options: [
+                    "Fayldagi umumiy elementlar (komponentlar) sonini",
+                    "Faylning diskdagi bayt o'lchamini",
+                    "Fayl yaratilgan yilni",
+                    "Fayldagi satrlar umumiy sonini"
+                ],
+                cat: "pascal"
+            },
+            {
+                id: 266,
+                q: "Paskalda FilePos(F) funksiyasi nimani aniqlaydi?",
+                answer: "Fayl ko'rsatkichining joriy element raqamini (pozitsiyasini)",
+                options: [
+                    "Fayl ko'rsatkichining joriy element raqamini (pozitsiyasini)",
+                    "Fayldagi xatoliklar sonini",
+                    "Faylning oxirgi elementi manzilini",
+                    "Fayldagi birinchi element qiymatini"
+                ],
+                cat: "pascal"
+            },
+            {
+                id: 267,
+                q: "Algoritmning 'natijaviylik' xossasi nimani anglatadi?",
+                answer: "Algoritm chekli qadamdan so'ng albatta aniq natija yoki javob berishi kerak",
+                options: [
+                    "Algoritm chekli qadamdan so'ng albatta aniq natija yoki javob berishi kerak",
+                    "Algoritm o'ta tushunarli tilda yozilishi shart",
+                    "Bitta algoritm hamma masalalarni yecha olishi lozim",
+                    "Algoritmni qismlarga bo'lib bajarish mumkinligi"
+                ],
+                cat: "pascal"
+            },
+            {
+                id: 268,
+                q: "Algoritmning 'ommaviylik' xossasi nimani anglatadi?",
+                answer: "Bitta algoritm shu turdagi barcha masalalarni yechishga yaroqli bo'lishi",
+                options: [
+                    "Bitta algoritm shu turdagi barcha masalalarni yechishga yaroqli bo'lishi",
+                    "Algoritm hamma insonlar uchun ochiq bo'lishi",
+                    "Algoritm ko'p vaqt va xotira talab qilmasligi",
+                    "Algoritmning chekli qadamda tugashi"
+                ],
+                cat: "pascal"
+            },
+            {
+                id: 269,
+                q: "Algoritmning 'diskretlilik' xossasi nimani anglatadi?",
+                answer: "Algoritmni alohida, chekli va oddiy qadamlarga bo'lib ketma-ket bajarish imkoniyati",
+                options: [
+                    "Algoritmni alohida, chekli va oddiy qadamlarga bo'lib ketma-ket bajarish imkoniyati",
+                    "Algoritmning doimo bir xil natija berishi",
+                    "Algoritmning faqat matematik formulalardan iboratligi",
+                    "Algoritmning barcha dasturlash tillarida bir xil ishlashi"
+                ],
+                cat: "pascal"
+            },
+            {
+                id: 270,
+                q: "C++ da override kalit so'zining vazifasi nima?",
+                answer: "Virtual metodni qayta aniqlashda imlo yoki sintaktik xatoliklarning oldini olish",
+                options: [
+                    "Virtual metodni qayta aniqlashda imlo yoki sintaktik xatoliklarning oldini olish",
+                    "Sinf a'zolarini o'chirishni taqiqlash",
+                    "Funksiyani inline rejimiga majburlash",
+                    "Konstruktor yuklanishini nazorat qilish"
+                ],
+                cat: "cpp"
+            },
+            {
+                id: 271,
+                q: "C++ da final kalit so'zi sinf nomidan keyin qo'llansa nima bo'ladi?",
+                answer: "Ushbu sinfdan boshqa sinflar voris (meros) olishi qat'iyan taqiqlanadi",
+                options: [
+                    "Ushbu sinfdan boshqa sinflar voris (meros) olishi qat'iyan taqiqlanadi",
+                    "Sinf obyektlarini faqat bitta yaratishga ruxsat beriladi",
+                    "Sinfni abstrakt klassga aylantiradi",
+                    "Sinf faqat static rejimda ishlaydi"
+                ],
+                cat: "cpp"
+            },
+            {
+                id: 272,
+                q: "C++ da final kalit so'zi virtual metodda ishlatilsa nima sodir bo'ladi?",
+                answer: "Hosilaviy sinflarda ushbu metodni qayta aniqlash (override) taqiqlanadi",
+                options: [
+                    "Hosilaviy sinflarda ushbu metodni qayta aniqlash (override) taqiqlanadi",
+                    "Metodning tanasi bo'lmasligini talab qiladi",
+                    "Metodni faqat inline rejimda ishlatishga ruxsat beradi",
+                    "Metod faqat bitta parametr qabul qiladi"
+                ],
+                cat: "cpp"
+            },
+            {
+                id: 273,
+                q: "C++ da mutable kalit so'zining vazifasi nima?",
+                answer: "const kalit so'zi bilan e'lon qilingan metodlar ichida ham ushbu o'zgaruvchi qiymatini o'zgartirishga ruxsat berish",
+                options: [
+                    "const kalit so'zi bilan e'lon qilingan metodlar ichida ham ushbu o'zgaruvchi qiymatini o'zgartirishga ruxsat berish",
+                    "O'zgaruvchini avtomatik dinamik xotiraga o'tkazish",
+                    "Ko'p oqimli dasturlarda o'zgaruvchini himoyalash",
+                    "O'zgaruvchining xotira adresini yashirish"
+                ],
+                cat: "cpp"
+            },
+            {
+                id: 274,
+                q: "C++ da explicit kalit so'zi nima uchun ishlatiladi?",
+                answer: "Konstruktor orqali bilvosita (implicit) tiplar o'zgarishi va xavfli avtomatik o'zlashtirishlarning oldini olish uchun",
+                options: [
+                    "Konstruktor orqali bilvosita (implicit) tiplar o'zgarishi va xavfli avtomatik o'zlashtirishlarning oldini olish uchun",
+                    "Sinf elementlarini ochiq (public) qilish uchun",
+                    "Destruktor tezligini oshirish uchun",
+                    "Sinf andozalarini kompilyatsiya qilish uchun"
+                ],
+                cat: "cpp"
+            },
+            {
+                id: 275,
+                q: "Paskalda A, B: boolean; bo'lsa, 'A xor B' ifoda qachon rost (true) bo'ladi?",
+                answer: "A va B har xil mantiqiy qiymatga ega bo'lganda (biri true, biri false)",
+                options: [
+                    "A va B har xil mantiqiy qiymatga ega bo'lganda (biri true, biri false)",
+                    "Ikkalasi ham bir vaqtda true bo'lganda",
+                    "Ikkalasi ham bir vaqtda false bo'lganda",
+                    "A ning qiymati false bo'lganda"
+                ],
+                cat: "pascal"
+            },
+            {
+                id: 276,
+                q: "Pascal tilida belgili (char) kattaliklar ustida qaysi munosabat amalini bajarib bo'lmaydi?",
+                answer: "Barcha munosabat amallarini ( <, >, =, <=, >=, <> ) to'liq bajarish mumkin",
+                options: [
+                    "Barcha munosabat amallarini ( <, >, =, <=, >=, <> ) to'liq bajarish mumkin",
+                    "Katta va kichik amallarini ( <, > ) bajarib bo'lmaydi",
+                    "Teng munosabat amalini ( = ) bajarib bo'lmaydi",
+                    "Teng emas amalini ( <> ) bajarib bo'lmaydi"
+                ],
+                cat: "pascal"
+            },
+            {
+                id: 277,
+                q: "Paskal tilida chr(65) funksiyasi nima qaytaradi?",
+                answer: "'A' belgisini (ASCII kodi 65 bo'lgan belgi)",
+                options: [
+                    "'A' belgisini (ASCII kodi 65 bo'lgan belgi)",
+                    "65 butun sonini",
+                    "Xatolik haqida xabarni",
+                    "Bo'sh simvol satrini"
+                ],
+                cat: "pascal"
+            },
+            {
+                id: 278,
+                q: "Paskal tilida ord('A') funksiyasi nima qaytaradi?",
+                answer: "65 (belgining ASCII kodi butun son qiymatini)",
+                options: [
+                    "65 (belgining ASCII kodi butun son qiymatini)",
+                    "'A' belgisining o'zini",
+                    "Mantiqiy true qiymatini",
+                    "'B' belgisini"
+                ],
+                cat: "pascal"
+            },
+            {
+                id: 279,
+                q: "Paskal tilida pred('B') funksiyasi nima qaytaradi?",
+                answer: "'A' belgisini (alfavitda o'zidan oldingi belgini)",
+                options: [
+                    "'A' belgisini (alfavitda o'zidan oldingi belgini)",
+                    "'C' belgisini",
+                    "ASCII kod qiymatini (66)",
+                    "Xatolik qaytaradi"
+                ],
+                cat: "pascal"
+            },
+            {
+                id: 280,
+                q: "Paskal tilida succ('A') funksiyasi nima qaytaradi?",
+                answer: "'B' belgisini (alfavitda o'zidan keyingi belgini)",
+                options: [
+                    "'B' belgisini (alfavitda o'zidan keyingi belgini)",
+                    "'A' belgisini",
+                    "65 sonini",
+                    "true mantiqiy qiymatini"
+                ],
+                cat: "pascal"
+            },
+            {
+                id: 281,
+                q: "Paskalda 'a:=5; b:=3; b:=a; a:=b; a=?' bajarilgach, a ning qiymati nechaga teng bo'ladi?",
+                answer: "5",
+                options: ["5", "3", "8", "Ifoda xato"],
+                cat: "pascal"
+            },
+            {
+                id: 282,
+                q: "Ma'lumotlar ustida bajariladigan mantiqiy qo'shish amalini ko'rsating.",
+                answer: "OR",
+                options: ["OR", "AND", "NOT", "XOR"],
+                cat: "pascal"
+            },
+            {
+                id: 283,
+                q: "Paskal tilida Standart toifaga (standart types) nimalar kiradi?",
+                answer: "REAL, INTEGER, BOOLEAN, CHAR",
+                options: [
+                    "REAL, INTEGER, BOOLEAN, CHAR",
+                    "ARRAY, RECORD, FILE",
+                    "LABEL, CONST, VAR",
+                    "STRING, TEXT, POINTER"
+                ],
+                cat: "pascal"
+            },
+            {
+                id: 284,
+                q: "Dasturning bajarilish natijasini aniqlang:\n\nProgram test;\nvar k, p:integer;\nbegin\n  p:=1;\n  FOR k:=5 DOWNTO 1 DO\n    p:=p*k;\n  writeln(p);\nEND.",
+                answer: "120",
+                options: ["120", "1120", "1020", "5120"],
+                cat: "pascal"
+            }
+        ];
+
+        // Global o'zgaruvchilar holati
+        let activeQuestions = [];
+        let currentIndex = 0;
+        let quizMode = 'study'; // 'study' yoki 'exam'
+        let examTimerInterval = null;
+        let examSecondsLeft = 2700; // 45 daqiqa qolgan 84 ta savol uchun yetarli
+        let examAnswers = {}; 
+        let studyResults = {}; 
+        let bookmarkedQuestionIds = JSON.parse(localStorage.getItem('bookmarked_modern_prog_84_questions') || '[]');
+
+        // Mavzuni yuklash
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        window.onload = function() {
+            updateThemeToggleButton();
+            loadStateFromLocalStorage();
+            initializeQuestions();
+            filterQuestions(); 
+        }
+
+        // Savollarni nusxalash va variantlarini boshlang'ich aralashtirish
+        function initializeQuestions() {
+            activeQuestions = rawQuestionsData.map(q => {
+                const shuffledOpts = shuffleArray([...q.options]);
+                return {
+                    ...q,
+                    options: shuffledOpts
+                };
+            });
+        }
+
+        function loadStateFromLocalStorage() {
+            const savedStudyResults = localStorage.getItem('modern_prog_84_study_results');
+            if (savedStudyResults) {
+                studyResults = JSON.parse(savedStudyResults);
+            }
+        }
+
+        function saveStateToLocalStorage() {
+            localStorage.setItem('modern_prog_84_study_results', JSON.stringify(studyResults));
+            localStorage.setItem('bookmarked_modern_prog_84_questions', JSON.stringify(bookmarkedQuestionIds));
+        }
+
+        // Fisher-Yates aralashtirish algoritmi
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Hozirgi tanlangan savollar to'plamini aralashtirish
+        function shuffleCurrentQuestions() {
+            activeQuestions = shuffleArray(activeQuestions);
+            activeQuestions.forEach(q => {
+                q.options = shuffleArray([...q.options]);
+            });
+            currentIndex = 0;
+            renderQuiz();
+            renderQuestionMap();
+        }
+
+        // Quiz rejimini almashtirish (O'rganish <-> Imtihon)
+        function changeQuizMode(mode) {
+            quizMode = mode;
+            const studyBtn = document.getElementById('modeStudyBtn');
+            const examBtn = document.getElementById('modeExamBtn');
+            const timerContainer = document.getElementById('examTimerContainer');
+            const examSubmitBtn = document.getElementById('examSubmitBtn');
+
+            if (mode === 'study') {
+                studyBtn.classList.add('bg-white', 'dark:bg-slate-800', 'text-brand-600', 'shadow-sm');
+                studyBtn.classList.remove('text-slate-500', 'dark:text-slate-400');
+                examBtn.classList.remove('bg-white', 'dark:bg-slate-800', 'text-brand-600', 'shadow-sm');
+                examBtn.classList.add('text-slate-500', 'dark:text-slate-400');
+                timerContainer.classList.add('hidden');
+                examSubmitBtn.classList.add('hidden');
+                clearInterval(examTimerInterval);
+            } else {
+                examBtn.classList.add('bg-white', 'dark:bg-slate-800', 'text-brand-600', 'shadow-sm');
+                examBtn.classList.remove('text-slate-500', 'dark:text-slate-400');
+                studyBtn.classList.remove('bg-white', 'dark:bg-slate-800', 'text-brand-600', 'shadow-sm');
+                studyBtn.classList.add('text-slate-500', 'dark:text-slate-400');
+                timerContainer.classList.remove('hidden');
+                examSubmitBtn.classList.remove('hidden');
+                startExamTimer();
+            }
+            renderQuiz();
+            renderQuestionMap();
+        }
+
+        function startExamTimer() {
+            clearInterval(examTimerInterval);
+            examSecondsLeft = 2700; // 45 daqiqa
+            updateTimerDisplay();
+            examTimerInterval = setInterval(() => {
+                examSecondsLeft--;
+                updateTimerDisplay();
+                if (examSecondsLeft <= 0) {
+                    clearInterval(examTimerInterval);
+                    finishExam(true);
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(examSecondsLeft / 60);
+            const seconds = examSecondsLeft % 60;
+            document.getElementById('examTimerText').innerText = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        // Qidirish va filtrlash tizimi
+        function filterQuestions() {
+            const filterVal = document.getElementById('categoryFilter').value;
+            const searchVal = document.getElementById('searchInput').value.toLowerCase();
+
+            activeQuestions = rawQuestionsData.filter(q => {
+                const matchesSearch = q.q.toLowerCase().includes(searchVal) || q.answer.toLowerCase().includes(searchVal);
+                
+                if (filterVal === 'all') {
+                    return matchesSearch;
+                } else if (filterVal === 'bookmarked') {
+                    return bookmarkedQuestionIds.includes(q.id) && matchesSearch;
+                } else {
+                    return q.cat === filterVal && matchesSearch;
+                }
+            });
+
+            document.getElementById('filteredCountBadge').innerText = `${activeQuestions.length} / ${rawQuestionsData.length}`;
+            currentIndex = 0;
+            renderQuiz();
+            renderQuestionMap();
+            updateStats();
+        }
+
+        // Savolni render qilish (Dinamik variantlar yuklanishi)
+        function renderQuiz() {
+            const container = document.getElementById('optionsListContainer');
+            const explanationCard = document.getElementById('explanationCard');
+            
+            if (activeQuestions.length === 0) {
+                document.getElementById('questionTextDisplay').innerText = "Belgilangan parametr bo'yicha savol topilmadi! Iltimos, filter yoki qidiruv so'zini to'g'rilang.";
+                document.getElementById('questionIndexBadge').innerText = "SAVOL 0";
+                document.getElementById('questionSourceBadge').innerText = "";
+                container.innerHTML = `
+                    <div class="p-6 text-center text-slate-400 dark:text-slate-500 font-semibold border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl">
+                        Natija topilmadi.
+                    </div>`;
+                explanationCard.classList.add('hidden');
+                return;
+            }
+
+            const current = activeQuestions[currentIndex];
+            
+            // Indekslarni belgilash
+            document.getElementById('questionIndexBadge').innerText = `SAVOL ${current.id} (${currentIndex + 1} / ${activeQuestions.length})`;
+            
+            let catName = "Pascal va Algoritm Asoslari";
+            if (current.cat === 'cpp') catName = "C++ Dasturlash Tili";
+            if (current.cat === 'stl') catName = "STL Kutubxonasi";
+            if (current.cat === 'oop') catName = "OOP va Klasslar";
+            document.getElementById('questionSourceBadge').innerText = catName;
+
+            document.getElementById('questionTextDisplay').innerText = current.q;
+
+            // Yulduzcha (Bookmark) holatini yangilash
+            const bookmarkBtn = document.getElementById('bookmarkBtn');
+            if (bookmarkedQuestionIds.includes(current.id)) {
+                bookmarkBtn.classList.remove('text-slate-300', 'dark:text-slate-600');
+                bookmarkBtn.classList.add('text-amber-500');
+            } else {
+                bookmarkBtn.classList.add('text-slate-300', 'dark:text-slate-600');
+                bookmarkBtn.classList.remove('text-amber-500');
+            }
+
+            container.innerHTML = "";
+            explanationCard.classList.add('hidden');
+
+            const studyAns = studyResults[current.id];
+            const examAns = examAnswers[current.id];
+
+            current.options.forEach((opt, idx) => {
+                const charLabel = String.fromCharCode(65 + idx); // A, B, C, D
+                const button = document.createElement('button');
+                button.className = "w-full p-4 rounded-2xl text-left border text-sm sm:text-base font-semibold transition-all flex items-center justify-between gap-3 active:scale-[0.99] ";
+                
+                button.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center font-bold shrink-0 shadow-sm text-xs sm:text-sm">
+                            ${charLabel}
+                        </span>
+                        <span class="text-slate-700 dark:text-slate-200 leading-snug font-mono">${escapeHtml(opt)}</span>
+                    </div>
+                `;
+
+                if (quizMode === 'study') {
+                    if (studyAns) {
+                        button.disabled = true;
+                        // To'g'ri yoki noto'g'ri variantlarni ranglash
+                        if (opt === current.answer) {
+                            button.classList.add('border-emerald-500', 'bg-emerald-50/70', 'dark:bg-emerald-950/20');
+                            button.innerHTML += `<span class="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs shadow"><i class="fa-solid fa-check"></i></span>`;
+                        } else if (opt === studyAns.selectedOption) {
+                            button.classList.add('border-rose-500', 'bg-rose-50/70', 'dark:bg-rose-950/20');
+                            button.innerHTML += `<span class="w-6 h-6 rounded-full bg-rose-500 text-white flex items-center justify-center text-xs shadow"><i class="fa-solid fa-xmark"></i></span>`;
+                        } else {
+                            button.classList.add('border-slate-200', 'dark:border-slate-800', 'opacity-60');
+                        }
+                    } else {
+                        button.classList.add('border-slate-200', 'dark:border-slate-800', 'hover:border-brand-500', 'hover:bg-slate-50', 'dark:hover:bg-slate-700/30');
+                        button.onclick = () => selectStudyOption(current.id, opt);
+                    }
+                } else {
+                    // Imtihon rejimining vizualizatsiyasi
+                    if (examAns === opt) {
+                        button.classList.add('border-yellow-500', 'bg-yellow-50/50', 'dark:bg-yellow-950/20');
+                        button.innerHTML += `<span class="w-6 h-6 rounded-full bg-yellow-500 text-white flex items-center justify-center text-xs shadow"><i class="fa-solid fa-pen-clip"></i></span>`;
+                    } else {
+                        button.classList.add('border-slate-200', 'dark:border-slate-800', 'hover:border-brand-500', 'hover:bg-slate-50', 'dark:hover:bg-slate-700/30');
+                    }
+                    button.onclick = () => selectExamOption(current.id, opt);
+                }
+
+                container.appendChild(button);
+            });
+
+            if (quizMode === 'study' && studyAns) {
+                explanationCard.classList.remove('hidden');
+                document.getElementById('explanationTextDisplay').innerText = `To'g'ri javob: "${current.answer}"`;
+            }
+        }
+
+        // Savollar xaritasi generatsiyasi
+        function renderQuestionMap() {
+            const container = document.getElementById('questionsMapContainer');
+            container.innerHTML = "";
+
+            activeQuestions.forEach((q, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "h-10 rounded-xl font-extrabold text-xs transition-all flex items-center justify-center active:scale-90 shadow-sm ";
+                btn.innerText = q.id;
+
+                const isCurrent = idx === currentIndex;
+                const studyAns = studyResults[q.id];
+                const examAns = examAnswers[q.id];
+
+                if (isCurrent) {
+                    btn.classList.add('ring-4', 'ring-brand-500/50', 'scale-105', 'z-10');
+                }
+
+                if (quizMode === 'study') {
+                    if (studyAns) {
+                        if (studyAns.correct) {
+                            btn.classList.add('bg-emerald-500', 'text-white', 'hover:bg-emerald-600');
+                        } else {
+                            btn.classList.add('bg-rose-500', 'text-white', 'hover:bg-rose-600');
+                        }
+                    } else {
+                        btn.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300', 'hover:bg-slate-200', 'dark:hover:bg-slate-700');
+                    }
+                } else {
+                    if (examAns) {
+                        btn.classList.add('bg-yellow-500', 'text-white', 'hover:bg-yellow-600');
+                    } else {
+                        btn.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300', 'hover:bg-slate-200', 'dark:hover:bg-slate-700');
+                    }
+                }
+
+                btn.onclick = () => {
+                    currentIndex = idx;
+                    renderQuiz();
+                    renderQuestionMap();
+                }
+
+                container.appendChild(btn);
+            });
+        }
+
+        // Variantni tanlash amallari
+        function selectStudyOption(qId, selectedOpt) {
+            const q = rawQuestionsData.find(item => item.id === qId);
+            const isCorrect = q.answer === selectedOpt;
+            studyResults[qId] = {
+                correct: isCorrect,
+                selectedOption: selectedOpt
+            };
+
+            playQuizSound(isCorrect ? 'correct' : 'wrong');
+            saveStateToLocalStorage();
+            updateStats();
+            renderQuiz();
+            renderQuestionMap();
+        }
+
+        function selectExamOption(qId, selectedOpt) {
+            examAnswers[qId] = selectedOpt;
+            updateStats();
+            renderQuiz();
+            renderQuestionMap();
+        }
+
+        // Progress va statistikani hisoblash
+        function updateStats() {
+            let correct = 0;
+            let wrong = 0;
+            let totalAnswered = 0;
+
+            if (quizMode === 'study') {
+                rawQuestionsData.forEach(q => {
+                    if (studyResults[q.id]) {
+                        totalAnswered++;
+                        if (studyResults[q.id].correct) correct++;
+                        else wrong++;
+                    }
+                });
+            } else {
+                rawQuestionsData.forEach(q => {
+                    if (examAnswers[q.id]) {
+                        totalAnswered++;
+                        if (examAnswers[q.id] === q.answer) correct++;
+                        else wrong++;
+                    }
+                });
+            }
+
+            document.getElementById('correctCountText').innerText = correct;
+            document.getElementById('wrongCountText').innerText = wrong;
+            document.getElementById('answeredRatioText').innerText = `Yechildi: ${totalAnswered} / ${rawQuestionsData.length}`;
+            
+            const percent = totalAnswered > 0 ? Math.round((totalAnswered / rawQuestionsData.length) * 100) : 0;
+            document.getElementById('progressBarPercentage').innerText = `${percent}%`;
+            document.getElementById('progressBarFill').style.width = `${percent}%`;
+
+            document.getElementById('bookmarkCountText').innerText = `Yodda: ${bookmarkedQuestionIds.length}`;
+        }
+
+        // HTML belgilarini himoyalash
+        function escapeHtml(text) {
+            if (typeof text !== 'string') return text;
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        // Navigatsiya
+        function navigateToQuestion(direction) {
+            if (activeQuestions.length === 0) return;
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = activeQuestions.length - 1;
+            if (currentIndex >= activeQuestions.length) currentIndex = 0;
+            renderQuiz();
+            renderQuestionMap();
+        }
+
+        // Yodda saqlash
+        function toggleBookmarkActiveQuestion() {
+            if (activeQuestions.length === 0) return;
+            const current = activeQuestions[currentIndex];
+            const idxInBookmarks = bookmarkedQuestionIds.indexOf(current.id);
+
+            if (idxInBookmarks > -1) {
+                bookmarkedQuestionIds.splice(idxInBookmarks, 1);
+            } else {
+                bookmarkedQuestionIds.push(current.id);
+            }
+
+            saveStateToLocalStorage();
+            renderQuiz();
+            updateStats();
+        }
+
+        // Tozalash va qayta boshlash
+        function resetQuizState() {
+            studyResults = {};
+            examAnswers = {};
+            localStorage.removeItem('modern_prog_84_study_results');
+            updateStats();
+            renderQuiz();
+            renderQuestionMap();
+        }
+
+        // Imtihonni topshirish prompti
+        function finishExamPrompt() {
+            const answeredCount = Object.keys(examAnswers).length;
+            const confirmed = confirm(`Jami ${rawQuestionsData.length} ta savoldan ${answeredCount} tasiga javob berdingiz. Imtihonni yakunlashni tasdiqlaysizmi?`);
+            if (confirmed) {
+                finishExam(false);
+            }
+        }
+
+        function finishExam(isTimeout = false) {
+            clearInterval(examTimerInterval);
+            
+            let correct = 0;
+            let wrong = 0;
+            rawQuestionsData.forEach(q => {
+                const ans = examAnswers[q.id];
+                if (ans) {
+                    if (ans === q.answer) correct++;
+                    else wrong++;
+                }
+            });
+
+            const total = rawQuestionsData.length;
+            const percent = Math.round((correct / total) * 100);
+
+            document.getElementById('modalTotalAnswered').innerText = Object.keys(examAnswers).length;
+            document.getElementById('modalCorrect').innerText = correct;
+            document.getElementById('modalIncorrect').innerText = wrong;
+            document.getElementById('modalPercentText').innerText = `To'g'ri javob ko'rsatkichi: ${percent}%`;
+            document.getElementById('modalPercentBar').style.width = `${percent}%`;
+
+            let gradeText = "";
+            if (percent >= 86) {
+                gradeText = "A'LO! Ushbu 84 talik qiyin qismdan juda a'lo darajada o'tdingiz. Attestatsiya imtihoniga to'liq tayyorsiz.";
+            } else if (percent >= 71) {
+                gradeText = "YAXSHI. Savollarning katta qismiga to'g'ri javob topdingiz. Bir oz ko'proq mashq qilib natijani yanada oshiring.";
+            } else if (percent >= 55) {
+                gradeText = "QONIQLARLI. O'tish chegarasidan o'tdingiz, lekin o'rganish rejimida xatolar ustida ishlash tavsiya etiladi.";
+            } else {
+                gradeText = "YAKUNIY SINODAN O'TMADI. To'g'ri javob ko'rsatkichi juda kam. O'rganish rejimida qaytadan puxta o'rganing.";
+            }
+            document.getElementById('modalGradeText').innerText = gradeText;
+
+            document.getElementById('examResultModal').classList.remove('hidden');
+        }
+
+        function reviewExamAnswers() {
+            rawQuestionsData.forEach(q => {
+                const ans = examAnswers[q.id];
+                if (ans) {
+                    studyResults[q.id] = {
+                        correct: ans === q.answer,
+                        selectedOption: ans
+                    };
+                }
+            });
+            saveStateToLocalStorage();
+            document.getElementById('examResultModal').classList.add('hidden');
+            changeQuizMode('study');
+        }
+
+        function closeModalAndReset() {
+            document.getElementById('examResultModal').classList.add('hidden');
+            resetQuizState();
+            changeQuizMode('study');
+        }
+
+        // Tizim rejimi boshqaruvi
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            updateThemeToggleButton();
+        }
+
+        function updateThemeToggleButton() {
+            const html = document.documentElement;
+            const icon = document.getElementById('themeIcon');
+            if (html.classList.contains('dark')) {
+                icon.className = "fa-solid fa-sun";
+            } else {
+                icon.className = "fa-solid fa-moon";
+            }
+        }
+    </script>
+</body>
+</html>
